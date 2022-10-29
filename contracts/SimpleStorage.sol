@@ -4,9 +4,20 @@ pragma solidity ^0.8.16;
 
 contract SimpleStorage {
     string private message;
+    address public owner;
 
-    function setMessage(string memory _message) public {
-        message = _message;
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Ownable: Caller is not owner");
+        _;
+    }
+
+    constructor() {
+        message = "";
+        owner = msg.sender;
+    }
+
+    function setMessage(string memory newMessage) public onlyOwner {
+        message = newMessage;
     }
 
     function getMessage() public view returns (string memory) {
