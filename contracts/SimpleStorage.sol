@@ -7,13 +7,13 @@ contract SimpleStorage {
     address public owner;
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Ownable: Caller is not owner");
+        require(msg.sender == owner, "Caller is not the owner");
 
         _;
     }
 
     modifier notEmpty(string memory newMessage) {
-        require(bytes(newMessage).length > 0, "Message can't be empty");
+        require(bytes(newMessage).length > 0, "Message cannot be empty");
 
         _;
     }
