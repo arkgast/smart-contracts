@@ -8,16 +8,31 @@ contract SimpleStorage {
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Ownable: Caller is not owner");
+
         _;
     }
+
+    modifier notEmpty(string memory newMessage) {
+        require(bytes(newMessage).length > 0, "Message can't be empty");
+
+        _;
+    }
+
+    event MessageChanged(string);
 
     constructor() {
         message = "";
         owner = msg.sender;
     }
 
-    function setMessage(string memory newMessage) public onlyOwner {
+    function setMessage(string memory newMessage)
+        public
+        onlyOwner
+        notEmpty(newMessage)
+    {
         message = newMessage;
+
+        emit MessageChanged(message);
     }
 
     function getMessage() public view returns (string memory) {
