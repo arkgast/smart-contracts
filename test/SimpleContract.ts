@@ -36,7 +36,7 @@ describe("SimpleContract", () => {
       it("should reject if caller is not the owner", async () => {
         await expect(
           simpleStorage.connect(otherAccount).setMessage("Hello world!")
-        ).to.rejectedWith("Caller is not the owner.");
+        ).to.rejectedWith("Only the owner can call this function.");
       });
 
       it("should reject if message is empty", async () => {

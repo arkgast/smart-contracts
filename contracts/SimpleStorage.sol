@@ -2,8 +2,6 @@
 
 pragma solidity 0.8.16;
 
-import "hardhat/console.sol";
-
 contract SimpleStorage {
   address public immutable owner;
   string private message;
@@ -11,12 +9,12 @@ contract SimpleStorage {
   event MessageChanged(string);
 
   modifier onlyOwner() {
-    require(msg.sender == owner, 'Caller is not the owner.');
+    require(msg.sender == owner, "Only the owner can call this function.");
     _;
   }
 
-  modifier isEmpty(string memory newMessage) {
-    require(bytes(newMessage).length > 0, 'Message cannot be empty.');
+  modifier notEmpty(string memory newMessage) {
+    require(bytes(newMessage).length > 0, "Message cannot be empty.");
     _;
   }
 
@@ -26,11 +24,11 @@ contract SimpleStorage {
 
   function setMessage(string memory newMessage)
     external
+    notEmpty(newMessage)
     onlyOwner
-    isEmpty(newMessage)
   {
     message = newMessage;
-    emit MessageChanged(message);
+    emit MessageChanged(newMessage);
   }
 
   function getMessage() external view returns (string memory) {
