@@ -3,7 +3,8 @@
   "scripts": {
     "test": "npx hardhat test",
     "test:coverage": "npx hardhat coverage",
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "postinstall": "cd frontend && yarn install"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
