@@ -1,7 +1,8 @@
+import type { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { SimpleStorage } from "../typechain-types/SimpleStorage";
+import type { SimpleStorage } from "../typechain-types/SimpleStorage";
 
 async function simpleStorageFixture() {
   const [owner, otherAccount] = await ethers.getSigners();
@@ -12,8 +13,8 @@ async function simpleStorageFixture() {
 
 describe("SimpleContract", () => {
   let simpleStorage: SimpleStorage;
-  let owner: any;
-  let otherAccount: any;
+  let owner: SignerWithAddress;
+  let otherAccount: SignerWithAddress;
 
   beforeEach(async () => {
     ({ simpleStorage, owner, otherAccount } = await loadFixture(
