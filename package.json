@@ -7,6 +7,9 @@
     "test:coverage": "npx hardhat coverage",
     "compile": "npx hardhat compile",
     "compile:clean": "npx hardhat clean",
+    "frontend:dev": "cd frontend && yarn dev",
+    "frontend:build": "cd frontend && yarn build",
+    "frontend:preview": "cd frontend && yarn preview",
     "postinstall": "cd frontend && yarn install"
   },
   "devDependencies": {
