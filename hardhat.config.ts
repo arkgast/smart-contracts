@@ -1,8 +1,11 @@
+import dotenv from "dotenv";
 import "@nomicfoundation/hardhat-toolbox";
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { HardhatUserConfig, task, subtask, types } from "hardhat/config";
 import { HardhatRuntimeEnvironment, TaskArguments } from "hardhat/types";
 import { join } from "path";
+
+dotenv.config();
 
 const FRONTEND_CONTRACTS_PATH = "./frontend/src/contracts";
 
@@ -102,10 +105,10 @@ const config: HardhatUserConfig = {
     hardhat: {
       chainId: 31337,
       loggingEnabled: true,
-      mining: {
-        auto: false,
-        interval: 2000,
-      },
+    },
+    sepolia: {
+      url: `${process.env.SEPOLIA_RPC_URL}${process.env.SEPOLIA_API_KEY}`,
+      accounts: [`${process.env.SEPOLIA_PRIVATE_KEY}`],
     },
   },
 };
