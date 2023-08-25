@@ -10,18 +10,3 @@ export const useProvider = (): [ethers.BrowserProvider] | [] => {
 
   return [provider];
 };
-
-// {
-//   "inputs": [],
-//   "name": "newMethod",
-//   "outputs": [
-//     {
-//       "internalType": "uint8",
-//       "name": "",
-//       "type": "uint8"
-//     }
-//   ],
-//   "stateMutability": "pure",
-//   "type": "function"
-// },
-//
